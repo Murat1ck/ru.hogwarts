@@ -6,10 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.service.StudentService;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/student")
@@ -56,6 +54,4 @@ public class StudentController {
         }
         return ResponseEntity.ok(Collections.emptyList());
     }
-
-
 }

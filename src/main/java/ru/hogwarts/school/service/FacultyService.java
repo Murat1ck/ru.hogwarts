@@ -5,12 +5,22 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Objects;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.hogwarts.school.model.Faculty;
-
+import ru.hogwarts.school.repositories.FacultyRepository;
+@AllArgsConstructor
 
 @Service
 public class FacultyService {
+    private final FacultyRepository facultyRepository;
+    public Faculty create(Faculty faculty) {
+        return facultyRepository.save(faculty);
+    }
+    public Faculty read(Long id) {
+        return facultyRepository.findById(id);
+    }
+
 
     private final HashMap<Long, Faculty> faculties = new HashMap<>();
     private long count = 0;
