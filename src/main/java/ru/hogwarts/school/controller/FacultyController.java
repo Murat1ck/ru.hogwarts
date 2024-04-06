@@ -5,17 +5,22 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.hogwarts.school.model.Faculty;
+import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.service.FacultyService;
 
 import java.util.Collection;
 import java.util.Collections;
-@AllArgsConstructor
+//@AllArgsConstructor
 @RestController
 @RequestMapping("/faculty")
 public class FacultyController {
 
     private final FacultyService facultyService;
 
+    // private final FacultyService facultyService;
+   public FacultyController(FacultyService facultyService) {
+       this.facultyService = facultyService;
+   }
     @GetMapping("{id}")
     public ResponseEntity<Faculty> getFacultyInfo(@PathVariable Long id) {
         Faculty faculty = facultyService.findFaculty(id);
