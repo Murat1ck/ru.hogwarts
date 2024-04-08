@@ -4,11 +4,14 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.service.StudentService;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
+
 @AllArgsConstructor
 @RestController
 @RequestMapping("/student")
@@ -50,5 +53,22 @@ public class StudentController {
             return ResponseEntity.ok(studentService.findByAge(age));
         }
         return ResponseEntity.ok(Collections.emptyList());
+    }
+    @GetMapping("/by-age")
+    public Collection<Student> getByAge(@RequestParam int age) {
+        return studentService.getByAge(age);
+    }
+
+    @GetMapping("/all")
+    public Collection<Student> getAll() {
+        return studentService.findAll();
+    }
+    @GetMapping("/by-age-between")
+    public List<Student> getByAgeBetween(@RequestParam int min, @RequestParam int max) {
+        return studentService.findByAgeBetween(min, max);
+    }
+    @GetMapping("/faculty-by-id")
+    public Faculty getFaculty(@RequestParam long id) {
+        return studentService.getFaculty(id);
     }
 }

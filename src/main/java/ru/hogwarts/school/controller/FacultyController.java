@@ -10,6 +10,8 @@ import ru.hogwarts.school.service.FacultyService;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
+
 //@AllArgsConstructor
 @RestController
 @RequestMapping("/faculty")
@@ -55,5 +57,17 @@ public class FacultyController {
             return ResponseEntity.ok(facultyService.findByColor(color));
         }
         return ResponseEntity.ok(Collections.emptyList());
+    }
+    @GetMapping("/by-color")
+    public Collection<Faculty> getByColor(@RequestParam String color) {
+        return facultyService.getByColor(color);
+    }
+    @GetMapping("/by-color-or-name")
+    public List<Faculty> getByColorOrName(@RequestParam String param) {
+        return facultyService.getByColorOrName(param);
+    }
+    @GetMapping("/students-by-id")
+    public List<Student> getStudentsById(@RequestParam long id) {
+        return facultyService.getStudents(id);
     }
 }
