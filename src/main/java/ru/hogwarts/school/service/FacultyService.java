@@ -22,7 +22,7 @@ public class FacultyService {
     private final StudentService studentService;
 
     public Faculty findFaculty(long id) {
-        return facultyRepository.get(id);
+        return facultyRepository.getById(id);
     }
 
     public Faculty editFaculty(Faculty faculty) {
