@@ -18,7 +18,6 @@ import java.util.List;
 public class StudentController {
 
     private final StudentService studentService;
-    public final StudentController studentController;
     @GetMapping("{id}")
     public ResponseEntity<Student> getStudentInfo(@PathVariable Long id) {
         Student student = studentService.findStudent(id);

@@ -1,7 +1,6 @@
 package ru.hogwarts.school.model;
 
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Setter
@@ -9,7 +8,11 @@ import lombok.*;
 @EqualsAndHashCode
 @AllArgsConstructor
 @ToString
+@Entity
+
 public class Student {
+    @Id
+    @GeneratedValue
     private long id;
     private String name;
     private int age;
