@@ -12,17 +12,13 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-//@AllArgsConstructor
+@AllArgsConstructor
 @RestController
 @RequestMapping("/faculty")
 public class FacultyController {
 
     private final FacultyService facultyService;
 
-    // private final FacultyService facultyService;
-   public FacultyController(FacultyService facultyService) {
-       this.facultyService = facultyService;
-   }
     @GetMapping("{id}")
     public ResponseEntity<Faculty> getFacultyInfo(@PathVariable Long id) {
         Faculty faculty = facultyService.findFaculty(id);
@@ -47,7 +43,7 @@ public class FacultyController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity deleteFaculty(@PathVariable Long id) {
+    public ResponseEntity<Object> deleteFaculty(@PathVariable Long id) {
         facultyService.deleteFaculty(id);
         return ResponseEntity.ok().build();
     }

@@ -12,11 +12,17 @@ import ru.hogwarts.school.repositories.FacultyRepository;
 
 @Service
 public class FacultyService {
+    //public FacultyService(FacultyRepository facultyRepository, StudentService studentService) {
+    //    this.facultyRepository = facultyRepository;
+       // this.studentService = studentService;
+   // }
+
     @Autowired
     private final FacultyRepository facultyRepository;
     private final StudentService studentService;
+
     public Faculty findFaculty(long id) {
-        return facultyRepository.getById(id);
+        return facultyRepository.get(id);
     }
 
     public Faculty editFaculty(Faculty faculty) {

@@ -9,8 +9,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 //@OpenAPIDefinition
 @SpringBootApplication
-@ComponentScan("application")
-@EnableJpaRepositories("healthchecker")
+//@ComponentScan("application")
+//@EnableJpaRepositories("healthchecker")
 //@EntityScan("healthchecker")
 public class Application {
 
