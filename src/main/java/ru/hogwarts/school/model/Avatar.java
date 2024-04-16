@@ -1,6 +1,7 @@
 package ru.hogwarts.school.model;
 
 import jakarta.persistence.*;
+import javax.persistence.Lob;
 import lombok.*;
 
 @Getter
@@ -20,7 +21,7 @@ public class Avatar {
     private long fileSize;
 
     private String mediaType;
-
+    @Lob
     private byte[] data;
 
     @OneToOne
