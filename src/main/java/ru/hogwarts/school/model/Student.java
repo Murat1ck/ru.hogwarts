@@ -21,6 +21,10 @@ public class Student {
     private Faculty faculty;
     public Student(){
     }
+
+    public Student(String student, int i) {
+    }
+
     public Long getId(){
         return id;
     }

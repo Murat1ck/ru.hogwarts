@@ -21,6 +21,9 @@ public class Faculty {
     public Faculty() {
     }
 
+    public Faculty(String faculty, String color) {
+    }
+
 
     public String getName() {
         return name;
