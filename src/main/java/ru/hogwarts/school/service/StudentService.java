@@ -1,13 +1,7 @@
 package ru.hogwarts.school.service;
-
-import lombok.AllArgsConstructor;
 import static java.nio.file.StandardOpenOption.CREATE_NEW;
-
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -15,10 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.List;
-import javax.imageio.ImageIO;
-import javax.persistence.EntityNotFoundException;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -31,18 +22,21 @@ import ru.hogwarts.school.repositories.StudentRepository;
 
 
 
-import static java.lang.reflect.Array.get;
-import static java.nio.file.StandardOpenOption.CREATE_NEW;
+
 
 @Service
-@AllArgsConstructor
+//@AllArgsConstructor
 public class StudentService {
 
     @Value("${avatars.dir.path}")
-    private String avatarsDir;
-    @Autowired
+    private final String avatarsDir;
     private final StudentRepository studentRepository;
     private final AvatarRepository avatarRepository;
+    public StudentService(@Value("${avatars.dir.path}")String avatarsDir, StudentRepository studentRepository, AvatarRepository avatarRepository) {
+        this.avatarsDir = avatarsDir;
+        this.studentRepository = studentRepository;
+        this.avatarRepository = avatarRepository;
+    }
 
 
 
