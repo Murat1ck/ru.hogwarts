@@ -1,10 +1,10 @@
 package ru.hogwarts.school.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @EqualsAndHashCode
@@ -21,7 +21,9 @@ public class Faculty {
     public Faculty() {
     }
 
-
+    @OneToMany(mappedBy = "faculty")
+    @JsonIgnore
+    private List<Student> students;
     public String getName() {
         return name;
     }

@@ -3,19 +3,15 @@ package ru.hogwarts.school.service;
 import java.util.*;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.repositories.FacultyRepository;
 @AllArgsConstructor
-
 @Service
 public class FacultyService {
-    //public FacultyService(FacultyRepository facultyRepository, StudentService studentService) {
-    //    this.facultyRepository = facultyRepository;
-       // this.studentService = studentService;
-   // }
 
     @Autowired
     private final FacultyRepository facultyRepository;
