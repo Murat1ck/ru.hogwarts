@@ -24,6 +24,10 @@ public class Faculty {
     @OneToMany(mappedBy = "faculty")
     @JsonIgnore
     private List<Student> students;
+
+    public Faculty(String faculty, String белый) {
+    }
+
     public String getName() {
         return name;
     }
