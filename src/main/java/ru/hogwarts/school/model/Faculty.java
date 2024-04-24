@@ -28,9 +28,13 @@ public class Faculty {
     public Faculty(String faculty, String белый) {
     }
 
+    public Faculty(long id, String name, String color) {
+    }
+
     public String getName() {
         return name;
     }
+
 
 }
 
