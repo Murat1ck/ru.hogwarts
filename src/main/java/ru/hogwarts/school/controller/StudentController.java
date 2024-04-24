@@ -1,6 +1,7 @@
 package ru.hogwarts.school.controller;
 
 import lombok.AllArgsConstructor;
+import org.aspectj.weaver.ast.Var;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -113,5 +114,17 @@ public class StudentController {
             response.setContentLength((int) avatar.getFileSize());
             is.transferTo(os);
         }
+    }
+    @GetMapping("/count")
+    public Integer getCount(){
+        return studentService.getCount();
+    }
+    @GetMapping("/avg-age")
+    public Double getAvgAge(){
+        return studentService.getAvgAge();
+    }
+    @GetMapping("/last-five-student")
+    public List<Student> getLastFiveStudent() {
+        return studentService.getLastFiveStudent();
     }
 }

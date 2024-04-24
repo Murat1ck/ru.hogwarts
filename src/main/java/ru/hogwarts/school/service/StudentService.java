@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -116,5 +117,15 @@ public class StudentService {
 
     private String getExtension(String fileName) {
         return fileName.substring(fileName.lastIndexOf(".") + 1);
+    }
+
+    public Integer getCount(){
+        return studentRepository.getCount();
+    }
+    public Double getAvgAge(){
+        return studentRepository.getAvgAge();
+    }
+    public List<Student> getLastFiveStudent(){
+        return studentRepository.getLastFiveStudent();
     }
 }
