@@ -64,7 +64,7 @@ public class AvatarService {
     }
 
 
-    public Page<Avatar> getWithPageAvatar(Integer page, Integer count) {
+    public Page <Avatar> getWithPageAvatar(Integer page, Integer count) {
         return avatarRepository.findAll(PageRequest.of(page-1, count));
     }
 
