@@ -2,17 +2,21 @@ package ru.hogwarts.school.service;
 
 import java.util.*;
 
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.repositories.FacultyRepository;
-@AllArgsConstructor
+//@AllArgsConstructor
 @Service
 public class FacultyService {
 
     private final FacultyRepository facultyRepository;
     private final StudentService studentService;
+
+    public FacultyService(FacultyRepository facultyRepository, StudentService studentService) {
+        this.facultyRepository = facultyRepository;
+        this.studentService = studentService;
+    }
 
     public Faculty findFaculty(long id) {
         return facultyRepository.getById(id);

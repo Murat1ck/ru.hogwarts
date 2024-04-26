@@ -26,7 +26,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 
-@AllArgsConstructor
+//@AllArgsConstructor
 @WebMvcTest(controllers = FacultyController.class)
 public class FacultyControllerWebMvcTest {
     @Autowired
