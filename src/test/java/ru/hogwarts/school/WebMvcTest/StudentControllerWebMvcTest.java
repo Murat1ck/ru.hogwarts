@@ -1,19 +1,5 @@
 package ru.hogwarts.school.WebMvcTest;
 
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import ru.hogwarts.school.controller.StudentController;
-import ru.hogwarts.school.model.Student;
-import ru.hogwarts.school.repositories.AvatarRepository;
-import ru.hogwarts.school.repositories.StudentRepository;
-import ru.hogwarts.school.service.StudentService;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import java.util.Collections;
-import java.util.Optional;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -24,6 +10,20 @@ import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import ru.hogwarts.school.controller.StudentController;
+import ru.hogwarts.school.model.Student;
+import ru.hogwarts.school.repositories.AvatarRepository;
+import ru.hogwarts.school.repositories.StudentRepository;
+import ru.hogwarts.school.service.StudentService;
+
+import java.util.Collections;
+import java.util.Optional;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 @WebMvcTest(controllers = StudentController.class)
