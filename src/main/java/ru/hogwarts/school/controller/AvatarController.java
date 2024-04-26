@@ -2,6 +2,7 @@ package ru.hogwarts.school.controller;
 
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -71,5 +72,10 @@ public class AvatarController {
     public List<Student> getLastFiveStudent() {
         return avatarService.getLastFiveStudent();
     }
-}
+    @GetMapping
+    public Page<Avatar> getWithPageAvatar (@RequestParam Integer page, @RequestParam Integer count ) throws  IOException{
+        return avatarService.getWithPageAvatar(page, count);
+    }
+    }
+
 
