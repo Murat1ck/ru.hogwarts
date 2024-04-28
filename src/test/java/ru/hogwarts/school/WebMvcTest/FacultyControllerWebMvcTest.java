@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.hogwarts.school.controller.FacultyController;
 import ru.hogwarts.school.model.Faculty;
+import ru.hogwarts.school.repositories.AvatarRepository;
 import ru.hogwarts.school.repositories.FacultyRepository;
+import ru.hogwarts.school.repositories.StudentRepository;
 import ru.hogwarts.school.service.FacultyService;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -24,6 +26,7 @@ import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import ru.hogwarts.school.service.StudentService;
 
 
 //@AllArgsConstructor
@@ -32,12 +35,23 @@ public class FacultyControllerWebMvcTest {
     @Autowired
     private MockMvc mockMvc;
 
+/*
     @MockBean
     private FacultyRepository facultyRepository;
 
     @SpyBean
     private FacultyService facultyService;
-
+*/
+@MockBean
+private FacultyRepository facultyRepository;
+    @MockBean
+    private StudentRepository studentRepository;
+    @MockBean
+    private AvatarRepository avatarRepository;
+    @SpyBean
+    private FacultyService facultyService;
+    @SpyBean
+    private StudentService studentService;
     @InjectMocks
     private FacultyController facultyController;
 

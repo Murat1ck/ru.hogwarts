@@ -13,12 +13,12 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import ru.hogwarts.school.controller.StudentController;
 import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.repositories.AvatarRepository;
+import ru.hogwarts.school.repositories.FacultyRepository;
 import ru.hogwarts.school.repositories.StudentRepository;
+import ru.hogwarts.school.service.FacultyService;
 import ru.hogwarts.school.service.StudentService;
-
 import java.util.Collections;
 import java.util.Optional;
-
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
@@ -31,7 +31,18 @@ public class StudentControllerWebMvcTest {
     @Autowired
     private MockMvc mockMvc;
 
+
     @MockBean
+    private FacultyRepository facultyRepository;
+    @MockBean
+    private StudentRepository studentRepository;
+    @MockBean
+    private AvatarRepository avatarRepository;
+    @SpyBean
+    private FacultyService facultyService;
+    @SpyBean
+    private StudentService studentService;
+/*
     private StudentRepository studentRepository;
 
     @MockBean
@@ -39,6 +50,7 @@ public class StudentControllerWebMvcTest {
 
     @SpyBean
     private StudentService studentService;
+*/
 
     @InjectMocks
     private StudentController studentController;
