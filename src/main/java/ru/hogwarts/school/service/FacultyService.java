@@ -19,7 +19,8 @@ public class FacultyService {
     }
 
     public Faculty findFaculty(long id) {
-        return facultyRepository.getById(id);
+
+        return facultyRepository.findById(id).orElseThrow();
     }
 
     public Faculty editFaculty(Faculty faculty) {
