@@ -34,7 +34,7 @@ public class StudentService {
 
 
     public Student findStudent(long id) {
-        return studentRepository.getById(id);
+        return studentRepository.findById(id).orElseThrow();
     }
 
     public Student editStudent(Student student) {
