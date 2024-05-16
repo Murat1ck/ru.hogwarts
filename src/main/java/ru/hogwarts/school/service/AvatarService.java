@@ -1,6 +1,8 @@
 package ru.hogwarts.school.service;
 
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,6 +23,7 @@ import static java.nio.file.StandardOpenOption.CREATE_NEW;
 @Service
 //@AllArgsConstructor
 public class AvatarService {
+    Logger logger = LoggerFactory.getLogger(AvatarService.class);
     @Value("${avatars.dir.path}")
     private final String avatarsDir;
     private final StudentRepository studentRepository;
@@ -31,12 +34,13 @@ public class AvatarService {
         this.avatarRepository = avatarRepository;
 }
     public Avatar findAvatar(long studentId) {
+        logger.info("Вызван метод findAvatar");
         return avatarRepository.findByStudentId(studentId).orElseThrow();
     }
 
     public void uploadAvatar(Long studentId, MultipartFile file) throws IOException {
+        logger.info("Вызван метод uploadAvatar");
         Student student = findStudent(studentId);
-
         Path filePath = Path.of(avatarsDir, studentId + "." + getExtension(file.getOriginalFilename()));
         Files.createDirectories(filePath.getParent());
         Files.deleteIfExists(filePath);
@@ -65,20 +69,25 @@ public class AvatarService {
 
 
     public Page <Avatar> getWithPageAvatar(Integer page, Integer count) {
+        logger.info("Вызван метод getWithPageAvatar");
         return avatarRepository.findAll(PageRequest.of(page-1, count));
     }
 
     private String getExtension(String fileName) {
+        logger.info("Вызван метод getExtensions");
         return fileName.substring(fileName.lastIndexOf(".") + 1);
     }
 
     public Integer getCount(){
+        logger.info("Вызван метод getCount");
         return studentRepository.getCount();
     }
     public Double getAvgAge(){
+        logger.info("Вызван метод getAvgAge");
         return studentRepository.getAvgAge();
     }
     public List<Student> getLastFiveStudent(){
+        logger.info("Вызван метод getLastFiveStudent");
         return studentRepository.getLastFiveStudent();
     }
 
