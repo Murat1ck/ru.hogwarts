@@ -66,4 +66,8 @@ public class FacultyController {
     public List<Student> getStudentsById(@RequestParam long id) {
         return facultyService.getStudents(id);
     }
+    @GetMapping("/long-name")
+    public String getLongNameFaculty() {
+        return facultyService.getLongNameFaculty();
+    }
 }

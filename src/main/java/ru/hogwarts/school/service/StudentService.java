@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,12 +30,12 @@ public class StudentService {
     private final String avatarsDir;
     private final StudentRepository studentRepository;
     private final AvatarRepository avatarRepository;
-    public StudentService(@Value("${avatars.dir.path}")String avatarsDir, StudentRepository studentRepository, AvatarRepository avatarRepository) {
+
+    public StudentService(@Value("${avatars.dir.path}") String avatarsDir, StudentRepository studentRepository, AvatarRepository avatarRepository) {
         this.avatarsDir = avatarsDir;
         this.studentRepository = studentRepository;
         this.avatarRepository = avatarRepository;
     }
-
 
 
     public Student findStudent(long id) {
@@ -44,17 +45,19 @@ public class StudentService {
 
     public Student editStudent(Student student) {
         logger.info("Вызван метод editStudent");
-       return studentRepository.save(student);
+        return studentRepository.save(student);
     }
 
     public void deleteStudent(long id) {
         logger.info("Вызван метод deleteStudent");
         studentRepository.deleteById(id);
     }
+
     public Collection<Student> findByAge(int age) {
         logger.info("Вызван метод findByAge");
         return studentRepository.findAllByAge(age);
-}
+    }
+
     public Student get(Long id) {
         logger.info("Вызван метод get");
         return studentRepository.findById(id).orElse(null);
@@ -77,8 +80,6 @@ public class StudentService {
     }
 
 
-
-
     public Collection<Student> findAll() {
         logger.info("Вызван метод findAll");
         return studentRepository.findAll();
@@ -93,11 +94,11 @@ public class StudentService {
         logger.info("Вызван метод getFaculty");
         return studentRepository.findById(studentId).get().getFaculty();
     }
+
     public List<Student> findByFacultyId(long facultyId) {
         logger.info("Вызван метод findByFacultyId");
         return studentRepository.findByFacultyId(facultyId);
     }
-
 
 
     public Avatar findAvatar(long studentId) {
@@ -134,5 +135,22 @@ public class StudentService {
     private String getExtension(String fileName) {
         logger.info("Вызван метод getExtension");
         return fileName.substring(fileName.lastIndexOf(".") + 1);
+    }
+
+    public List<String> getAllNamesStartWithA() {
+        String firstSymbol = "A";
+        return studentRepository.findAll().stream()
+                .map(Student::getName)
+                .map(String::toUpperCase)
+                .filter(name -> name.startsWith(firstSymbol))
+                .sorted()
+                .collect(Collectors.toList());
+    }
+
+    public double getAvgAgeWithStream() {
+        return studentRepository.findAll().stream()
+                .mapToDouble(Student::getAge)
+                .average()
+                .orElse(-1);
     }
 }

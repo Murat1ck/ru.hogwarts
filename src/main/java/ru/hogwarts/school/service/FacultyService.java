@@ -29,10 +29,10 @@ public class FacultyService {
 
     public Faculty editFaculty(Faculty faculty) {
         logger.info("вызван метод editFaculty");
-    return facultyRepository.save(faculty);
+        return facultyRepository.save(faculty);
     }
 
-    public void  deleteFaculty(long id) {
+    public void deleteFaculty(long id) {
         logger.info("вызван метод deleteFaculty");
         facultyRepository.deleteById(id);
     }
@@ -42,10 +42,12 @@ public class FacultyService {
 
         return facultyRepository.findAllByColor(color);
     }
+
     public Faculty get(Long id) {
         logger.info("вызван метод get");
         return facultyRepository.findById(id).orElse(null);
     }
+
     public Faculty add(Faculty faculty) {
         logger.info("вызван метод add");
         return facultyRepository.save(faculty);
@@ -64,6 +66,14 @@ public class FacultyService {
     public List<Student> getStudents(Long id) {
         logger.info("вызван метод getStudents");
         return studentService.findByFacultyId(id);
+    }
+
+    public String getLongNameFaculty() {
+        return facultyRepository.findAll()
+                .stream()
+                .map(Faculty::getName)
+                .max(Comparator.comparingInt(String::length))
+                .get();
     }
 }
 
