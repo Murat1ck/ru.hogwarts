@@ -30,4 +30,26 @@ public class InfoController {
         Long finish = System.currentTimeMillis();
         logger.info("Result:{},time:{}",results,finish-start);
     }
+    @GetMapping("/improved-compute")
+    public void improvedCompute() {
+        Long start = System.currentTimeMillis();
+        int results = Stream.iterate(1, a -> a + 1)
+                .limit(10_000_000)
+                .parallel()
+                .reduce(0, (a, b) -> a + b)
+                ;
+        Long finish = System.currentTimeMillis();
+        logger.info("ResultParallel:{},time:{}",results,finish-start);
+    }
+    @GetMapping("/sum-parallel")
+    public void getSumParallel() {
+        long start = System.currentTimeMillis();
+        int sum = Stream.iterate(1, a -> a + 1)
+                .parallel()
+                .limit(1_000_000)
+                .reduce(0, (a, b) -> a + b);
+        long finish = System.currentTimeMillis();
+
+        logger.info("Parallel. result: {}, execution time: {}", sum, finish - start);
+    }
 }
